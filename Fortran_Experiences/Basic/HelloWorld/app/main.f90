@@ -9,6 +9,7 @@ program main
   greeting_message = "Hello World!"
 
   print *, "Fortran by CMake!"
+  print *, "Version: ", __VERSION__
 
   write(*,*) trim(greeting_message)
 
