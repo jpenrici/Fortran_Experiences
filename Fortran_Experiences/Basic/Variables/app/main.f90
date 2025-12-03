@@ -55,7 +55,26 @@ program main
       print *, "number   = ", number
       print *, "float 32 = ", float32
       print *, "float 64 = ", float64
+   end block
 
+   ! Derived Types
+   block
+      type :: t_point3D
+         integer :: x, y, z
+      end type
+
+      type(t_point3D) :: p1
+      p1%x = 100
+      p1%y = 100
+      p1%z = -10
+
+      p1 = t_point3D(x=5, y=5, z=0)
+      p1 = t_point3D(10, 10, -2)
+      p1 = t_point3D(y=1, x=-2, z=5)
+
+      print *, "x:", p1%x
+      print *, "y:", p1%y
+      print *, "z:", p1%z
    end block
 
 end program main
