@@ -3,14 +3,14 @@
 
 program main
 
-  implicit none
+   implicit none
 
-  character(len=25) :: greeting_message
-  greeting_message = "Hello World!"
+   character(len=25) :: greeting_message
+   greeting_message = "Hello World!"
 
-  print *, "Fortran by CMake!"
-  print *, "Version: ", __VERSION__
+   print *, "Fortran by CMake!"
+   print *, "Version: ", __VERSION__
 
-  write(*,*) trim(greeting_message)
+   write (*, *) trim(greeting_message)
 
 end program main
