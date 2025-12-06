@@ -4,6 +4,7 @@ module Point3D
 
    type :: t_point3D
       integer :: x, y, z
+      character(len=5) :: label
    contains
       procedure, pass(this) :: distance => distance_impl
       procedure, pass(this) :: view => view_impl
@@ -14,6 +15,8 @@ contains
    function distance_impl(this, other) result(dist)
 
       use, intrinsic :: iso_fortran_env, only: real64
+      implicit none
+
       real(real64) :: dist
       class(t_point3D), intent(in) :: this
       type(t_point3D), intent(in) :: other
@@ -30,11 +33,11 @@ contains
 
    subroutine view_impl(this)
 
+      implicit none
+
       class(t_point3D), intent(in) :: this
 
-      print *, "x:", this%x
-      print *, "y:", this%y
-      print *, "z:", this%z
+      print '(A5,"( ", I4, ", ", I4, ", ", I4, ")")', this%label, this%x, this%y, this%z
 
    end subroutine view_impl
 
