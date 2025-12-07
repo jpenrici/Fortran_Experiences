@@ -59,22 +59,34 @@ program main
 
    ! Derived Types
    block
+      type :: t_point2D
+         sequence
+         integer :: x, y
+      end type
+
       type :: t_point3D
          integer :: x, y, z
       end type
 
-      type(t_point3D) :: p1
-      p1%x = 100
-      p1%y = 100
-      p1%z = -10
+      type(t_point2D) :: p1
+      type(t_point3D) :: p2
 
-      p1 = t_point3D(x=5, y=5, z=0)
-      p1 = t_point3D(10, 10, -2)
-      p1 = t_point3D(y=1, x=-2, z=5)
+      p1 = t_point2D(100, 10)
+      p1 = t_point2D(y=10, x=p1%x*2)
 
-      print *, "x:", p1%x
-      print *, "y:", p1%y
-      print *, "z:", p1%z
+      p2%x = 100
+      p2%y = 100
+      p2%z = -10
+
+      p2 = t_point3D(x=5, y=5, z=0)
+      p2 = t_point3D(10, 10, -2)
+      p2 = t_point3D(y=1, x=-2, z=5)
+      p2 = t_point3D(p1%x, p1%y, z=7)
+
+      print *, "x:", p2%x
+      print *, "y:", p2%y
+      print *, "z:", p2%z
+
    end block
 
 end program main
