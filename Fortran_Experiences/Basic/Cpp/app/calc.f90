@@ -13,9 +13,9 @@ contains
       bind(C, name='dot_product_fortran') &
       result(result_value)
 
+      integer(c_int), value :: n
+      type(c_ptr), value :: vector1_ptr, vector2_ptr
       real(c_double) :: result_value
-      integer(c_int), intent(in) :: n
-      type(c_ptr), intent(in) :: vector1_ptr, vector2_ptr
 
       real(c_double), pointer :: vector1(:), vector2(:)
 

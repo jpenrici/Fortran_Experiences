@@ -6,9 +6,9 @@
 extern "C" {
 #endif
 
-// Declaration of the function implemented in Fortran.
-double dot_product_fortran(int n, const void *vector1_ptr,
-                           const void *vector2_ptr);
+// Declaration of the function implemented in Fortran via Bind C.
+double dot_product_fortran(int n, const double *vector1_ptr,
+                           const double *vector2_ptr);
 
 #ifdef __cplusplus
 }
