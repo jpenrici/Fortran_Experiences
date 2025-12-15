@@ -1,0 +1,24 @@
+cmake_minimum_required(VERSION 3.25 FATAL_ERROR)
+
+project(
+  Math
+  VERSION 1.0
+  LANGUAGES Fortran)
+
+set(EXECUTABLE_NAME test)
+
+set(SOURCE_DIR "app")
+
+file(GLOB SOURCES "${SOURCE_DIR}/*.f90" "${SOURCE_DIR}/*.F90"
+     "${SOURCE_DIR}/*.f")
+
+add_executable(${EXECUTABLE_NAME} ${SOURCES})
+
+set(EXECUTABLE_OUTPUT_DIR "${CMAKE_BINARY_DIR}/bin")
+set_target_properties(${EXECUTABLE_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY
+                                                    "${EXECUTABLE_OUTPUT_DIR}")
+
+if(CMAKE_Fortran_COMPILER_WORKS)
+  target_compile_options(${EXECUTABLE_NAME} PRIVATE -O3)
+  target_compile_options(${EXECUTABLE_NAME} PRIVATE -std=f2018)
+endif()
