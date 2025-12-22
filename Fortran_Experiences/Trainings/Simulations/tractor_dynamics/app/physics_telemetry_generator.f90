@@ -5,11 +5,12 @@ module physics_telemetry
    use iso_fortran_env
    implicit none
 
+   ! Structure to hold tractor sensor data
    type :: TractorData
-      real(real64) :: velocity
-      real(real64) :: draft_force
-      real(real64) :: fuel_rate
-      integer      :: soil_type
+      real(real64) :: velocity      ! km/h
+      real(real64) :: draft_force   ! kN (KiloNewtons)
+      real(real64) :: fuel_rate     ! L/h
+      integer      :: soil_type     ! 1: Sandy, 2: Loam, 3: Clay
    end type TractorData
 
 contains

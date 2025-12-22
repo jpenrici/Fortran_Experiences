@@ -1,5 +1,5 @@
 ! app/main.f90
-! Training...
+! Testing simulation and data analysis.
 
 program tractor_main
 
