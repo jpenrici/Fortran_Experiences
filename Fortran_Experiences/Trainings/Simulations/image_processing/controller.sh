@@ -47,7 +47,7 @@ show_help() {
 
 setup_env() {
     echo -e "${GREEN}>>> Setting up Python environment...${NC}"
-    if [ ! -d "$VENV_PATH" ]; then
+    if [[ ! -d "$VENV_PATH" ]]; then
         python3 -m venv "$VENV_PATH"
     fi
     # shellcheck source=/dev/null
@@ -68,7 +68,7 @@ check_env() {
     command -v gnuplot &> /dev/null || { echo -e "${RED}Error: Gnuplot not found.${NC}"; exit 1; }
 
     # Check Python Venv
-    if [ ! -d "$VENV_PATH" ]; then
+    if [[ ! -d "$VENV_PATH" ]]; then
         echo -e "${RED}Error: Virtual environment (.venv) not found.${NC}"
         exit 1
     fi
@@ -108,7 +108,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         --gen)
             echo -e "${GREEN}>>> Executing C++ Generator...${NC}"
-            [ ! -f "$GEN_BIN" ] && echo -e "${RED}Bin not found. Run --build first.${NC}" && exit 1
+            [[ ! -f "$GEN_BIN" ]] && echo -e "${RED}Bin not found. Run --build first.${NC}" && exit 1
             "$GEN_BIN" "$PPM_OUT"
             shift
             ;;
@@ -121,18 +121,18 @@ while [[ $# -gt 0 ]]; do
             ;;
         --analyze)
             echo -e "${GREEN}>>> Executing Fortran Analyzer...${NC}"
-            [ ! -f "$ANALYZER_BIN" ] && echo -e "${RED}Bin not found. Run --build first.${NC}" && exit 1
+            [[ ! -f "$ANALYZER_BIN" ]] && echo -e "${RED}Bin not found. Run --build first.${NC}" && exit 1
             "$ANALYZER_BIN" "$CSV_OUT" "$STATS_OUT"
             shift
             ;;
         --plot)
             # Check if the plot file exists
-            if [ ! -f "$GP_SCRIPT" ]; then
+            if [[ ! -f "$GP_SCRIPT" ]]; then
                echo -e "${RED}Error: $GP_SCRIPT not found. Plotting will not be possible!${NC}"
                exit 1
             fi
             # Check if the data file was generated correctly
-            if [ ! -f "$STATS_OUT" ]; then
+            if [[ ! -f "$STATS_OUT" ]]; then
                echo -e "${RED}Error: $STATS_OUT not found. Run --analyze first.${NC}"
                exit 1
             fi
